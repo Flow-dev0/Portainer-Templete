@@ -1,0 +1,2912 @@
+{
+	"version": "2",
+	"templates": [
+	  {
+		"type": 1,
+		"title": "Adguardhome-sync",
+		"name": "Adguardhome-sync",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/adguardhome-sync/config</p>",
+		"description": "[Adguardhome-sync](https://github.com/bakito/adguardhome-sync/) is a tool to synchronize AdGuardHome config to replica instances.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/adguardhomesync-icon.png",
+		"image": "linuxserver/adguardhome-sync:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "CONFIGFILE",
+			"label": "CONFIGFILE",
+			"default": "/config/adguardhome-sync.yaml",
+			"description": "Set a custom config file."
+		  }
+		],
+		"ports": [
+		  "8080:8080/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/adguardhome-sync/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Bazarr",
+		"name": "Bazarr",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/bazarr/config<br>mkdir -p /volume1/docker/bazarr/movies<br>mkdir -p /volume1/docker/bazarr/tv</p>",
+		"description": "[Bazarr](https://www.bazarr.media/) is a companion application to Sonarr and Radarr. It can manage and download subtitles based on your requirements. You define your preferences by TV show or movie and Bazarr takes care of everything for you.",
+		"categories": [
+		  "Media"
+		],
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/bazarr.png",
+		"image": "linuxserver/bazarr:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "6767:6767/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/bazarr/config"
+		  },
+		  {
+			"container": "/movies",
+			"bind": "/volume1/docker/bazarr/movies"
+		  },
+		  {
+			"container": "/tv",
+			"bind": "/volume1/docker/bazarr/tv"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Booksonic-air",
+		"name": "Booksonic-air",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/booksonic-air/config<br>mkdir -p /volume1/docker/booksonic-air/audiobooks<br>mkdir -p /volume1/docker/booksonic-air/podcasts<br>mkdir -p /volume1/docker/booksonic-air/othermedia</p>",
+		"description": "[Booksonic-air](http://booksonic.org) is a platform for accessing the audiobooks you own wherever you are. At the moment the platform consists of: * Booksonic Air - A server for streaming your audiobooks, successor to the original Booksonic server and based on Airsonic. * Booksonic App - An DSub based Android app for connection to Booksonic-Air servers.",
+		"categories": [
+		  "Audio"
+		],
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/booksonic-air.png",
+		"image": "linuxserver/booksonic-air:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "CONTEXT_PATH",
+			"label": "CONTEXT_PATH",
+			"default": "url-base",
+			"description": "Base url for use with reverse proxies etc."
+		  }
+		],
+		"ports": [
+		  "4040:4040/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/booksonic-air/config"
+		  },
+		  {
+			"container": "/audiobooks",
+			"bind": "/volume1/docker/booksonic-air/audiobooks"
+		  },
+		  {
+			"container": "/podcasts",
+			"bind": "/volume1/docker/booksonic-air/podcasts"
+		  },
+		  {
+			"container": "/othermedia",
+			"bind": "/volume1/docker/booksonic-air/othermedia"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Bookstack",
+		"name": "Bookstack",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/bookstack/config</p>",
+		"description": "[Bookstack](https://github.com/BookStackApp/BookStack) is a free and open source Wiki designed for creating beautiful documentation. Featuring a simple, but powerful WYSIWYG editor it allows for teams to create detailed and useful documentation with ease. Powered by SQL and including a Markdown editor for those who prefer it, BookStack is geared towards making documentation more of a pleasure than a chore. For more information on BookStack visit their website and check it out: https://www.bookstackapp.com",
+		"categories": [
+		  "Media"
+		],
+		"platform": "linux",
+		"logo": "https://s3-us-west-2.amazonaws.com/linuxserver-docs/images/bookstack-logo500x500.png",
+		"image": "linuxserver/bookstack:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "APP_URL",
+			"label": "APP_URL",
+			"default": "",
+			"description": "for specifying the IP:port or URL your application will be accessed on (ie. `http://192.168.1.1:6875` or `https://bookstack.mydomain.com`"
+		  },
+		  {
+			"name": "DB_HOST",
+			"label": "DB_HOST",
+			"default": "<yourdbhost>",
+			"description": "for specifying the database host"
+		  },
+		  {
+			"name": "DB_USER",
+			"label": "DB_USER",
+			"default": "<yourdbuser>",
+			"description": "for specifying the database user"
+		  },
+		  {
+			"name": "DB_PASS",
+			"label": "DB_PASS",
+			"default": "<yourdbpass>",
+			"description": "for specifying the database password"
+		  },
+		  {
+			"name": "DB_DATABASE",
+			"label": "DB_DATABASE",
+			"default": "bookstackapp",
+			"description": "for specifying the database to be used"
+		  }
+		],
+		"ports": [
+		  "6875:80/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/bookstack/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Calibre",
+		"name": "Calibre",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/calibre/config</p>",
+		"description": "[Calibre](https://calibre-ebook.com/) is a powerful and easy to use e-book manager. Users say it’s outstanding and a must-have. It’ll allow you to do nearly everything and it takes things a step beyond normal e-book software. It’s also completely free and open source and great for both casual users and computer experts.",
+		"categories": [
+		  "Media"
+		],
+		"platform": "linux",
+		"logo": "https://github.com/kovidgoyal/calibre/raw/master/resources/images/lt.png",
+		"image": "linuxserver/calibre:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "PASSWORD",
+			"label": "PASSWORD",
+			"default": "",
+			"description": "Optionally set a password for the gui."
+		  },
+		  {
+			"name": "CLI_ARGS",
+			"label": "CLI_ARGS",
+			"default": "",
+			"description": "Optionally pass cli start arguments to calibre."
+		  }
+		],
+		"ports": [
+		  "8080:8080/tcp",
+		  "8081:8081/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/calibre/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Chevereto",
+		"name": "Chevereto",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/chevereto/config<br>mkdir -p /volume1/docker/chevereto/data</p>",
+		"description": "[Chevereto](https://github.com/rodber/chevereto-free) is an image hosting software that allows you to create a beautiful and full-featured image hosting website on your own server. It's your hosting and your rules, so say goodbye to closures and restrictions.",
+		"categories": [
+		  "Websites"
+		],
+		"platform": "linux",
+		"logo": "",
+		"image": "linuxserver/chevereto:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "80:80/tcp",
+		  "443:443/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/chevereto/config"
+		  },
+		  {
+			"container": "/data",
+			"bind": "/volume1/docker/chevereto/data"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Cloud9",
+		"name": "Cloud9",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/cloud9/config<br>mkdir -p /volume1/docker/cloud9/code<br></p>",
+		"description": "[Cloud9](https://github.com/c9/core) Cloud9 is a complete web based IDE with terminal access. This container is for running their core SDK locally and developing plugins.",
+		"categories": [
+		  "Development"
+		],
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/cloud9.png",
+		"image": "linuxserver/cloud9:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "GITURL",
+			"label": "GITURL",
+			"default": "https://github.com/linuxserver/docker-cloud9.git",
+			"description": "Specify a git repo to checkout on first startup"
+		  },
+		  {
+			"name": "USERNAME",
+			"label": "USERNAME",
+			"default": "",
+			"description": "Optionally specify a username for http auth"
+		  },
+		  {
+			"name": "PASSWORD",
+			"label": "PASSWORD",
+			"default": "",
+			"description": "Optionally specify a password for http auth (if USERNAME and PASSWORD are not set, there will be no http auth)"
+		  }
+		],
+		"ports": [
+		  "8000:8000/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/cloud9/config"
+		  },
+		  {
+			"container": "/code",
+			"bind": "/volume1/docker/cloud9/code"
+		  },
+		  {
+			"container": "/var/run/docker.sock",
+			"bind": "/var/run/docker.sock"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Davos",
+		"name": "Davos",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/davos/config<br>mkdir -p /volume1/docker/davos/download</p>",
+		"description": "[Davos](https://github.com/linuxserver/davos) is an FTP automation tool that periodically scans given host locations for new files. It can be configured for various purposes, including listening for specific files to appear in the host location, ready for it to download and then move, if required. It also supports completion notifications as well as downstream API calls, to further the workflow.",
+		"categories": [
+		  "Productivity"
+		],
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/davos/master/docs/list.PNG",
+		"image": "linuxserver/davos:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "8080:8080/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/davos/config"
+		  },
+		  {
+			"container": "/download",
+			"bind": "/volume1/docker/davos/download"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Deluge",
+		"name": "Deluge",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/deluge/config<br>mkdir -p /volume1/docker/deluge/downloads</p>",
+		"description": "[Deluge](http://deluge-torrent.org/) is a lightweight, Free Software, cross-platform BitTorrent client. * Full Encryption * WebUI * Plugin System * Much more...",
+		"categories": [
+		  "File Management"
+		],
+		"platform": "linux",
+		"logo": "https://avatars2.githubusercontent.com/u/6733935?v=3&s=200",
+		"image": "linuxserver/deluge:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "DELUGE_LOGLEVEL",
+			"label": "DELUGE_LOGLEVEL",
+			"default": "error",
+			"description": "set the loglevel output when running Deluge, default is info for deluged and warning for delgued-web"
+		  }
+		],
+		"ports": [
+		  "8112:8112/tcp",
+		  "6881:6881/tcp",
+		  "6881:6881/udp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/deluge/config"
+		  },
+		  {
+			"container": "/downloads",
+			"bind": "/volume1/docker/deluge/downloads"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Dillinger",
+		"name": "Dillinger",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/dillinger/config</p>",
+		"description": "[Dillinger](https://github.com/joemccann/dillinger) is a cloud-enabled, mobile-ready, offline-storage, AngularJS powered HTML5 Markdown editor.",
+		"categories": [
+		  "Development"
+		],
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/dillinger.png",
+		"image": "linuxserver/dillinger:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "8080:8080/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/dillinger/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Domoticz",
+		"name": "Domoticz",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/domoticz/config</p>",
+		"description": "[Domoticz](https://www.domoticz.com) is a Home Automation System that lets you monitor and configure various devices like: Lights, Switches, various sensors/meters like Temperature, Rain, Wind, UV, Electra, Gas, Water and much more. Notifications/Alerts can be sent to any mobile device.",
+		"categories": [
+		  "Automation"
+		],
+		"platform": "linux",
+		"logo": "https://github.com/domoticz/domoticz/raw/master/www/images/logo.png",
+		"image": "linuxserver/domoticz:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "WEBROOT",
+			"label": "WEBROOT",
+			"default": "domoticz",
+			"description": "Sets webroot to domoticz for usage with subfolder reverse proxy. Not needed unless reverse proxying."
+		  },
+		  {
+			"name": "DBASE",
+			"label": "DBASE",
+			"default": "<path to database>",
+			"description": "Sets path to database. Do not set unless you know what this does."
+		  }
+		],
+		"ports": [
+		  "8080:8080/tcp",
+		  "6144:6144/tcp",
+		  "1443:1443/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/domoticz/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Duckdns",
+		"name": "Duckdns",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/duckdns/config</p>",
+		"description": "[Duckdns](https://duckdns.org/) is a free service which will point a DNS (sub domains of duckdns.org) to an IP of your choice. The service is completely free, and doesn't require reactivation or forum posts to maintain its existence.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/duckdns.png",
+		"image": "linuxserver/duckdns:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "SUBDOMAINS",
+			"label": "SUBDOMAINS",
+			"default": "subdomain1,subdomain2",
+			"description": "multiple subdomains allowed, comma separated, no spaces"
+		  },
+		  {
+			"name": "TOKEN",
+			"label": "TOKEN",
+			"default": "token",
+			"description": "DuckDNS token"
+		  },
+		  {
+			"name": "LOG_FILE",
+			"label": "LOG_FILE",
+			"default": "false",
+			"description": "Set to `true` to log to file (also need to map /config)."
+		  }
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/duckdns/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Duplicati",
+		"name": "Duplicati",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/duplicati/config<br>mkdir -p /volume1/docker/duplicati/backups<br>mkdir -p /volume1/docker/duplicati/source</p>",
+		"description": "[Duplicati](https://www.duplicati.com/) works with standard protocols like FTP, SSH, WebDAV as well as popular services like Microsoft OneDrive, Amazon Cloud Drive & S3, Google Drive, box.com, Mega, hubiC and many others.",
+		"platform": "linux",
+		"logo": "https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/duplicati-icon.png",
+		"image": "linuxserver/duplicati:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "CLI_ARGS",
+			"label": "CLI_ARGS",
+			"default": "",
+			"description": "Optionally specify any [CLI variables](https://duplicati.readthedocs.io/en/latest/07-other-command-line-utilities/) you want to launch the app with"
+		  }
+		],
+		"ports": [
+		  "8200:8200/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/duplicati/config"
+		  },
+		  {
+			"container": "/backups",
+			"bind": "/volume1/docker/duplicati/backups"
+		  },
+		  {
+			"container": "/source",
+			"bind": "/volume1/docker/duplicati/source"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Emby",
+		"name": "Emby",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/emby/config<br>mkdir -p /volume1/docker/emby/data/tvshows<br>mkdir -p /volume1/docker/emby/data/movies<br></p>",
+		"description": "[Emby](https://emby.media/) organizes video, music, live TV, and photos from personal media libraries and streams them to smart TVs, streaming boxes and mobile devices. This container is packaged as a standalone emby Media Server.",
+		"categories": [
+		  "Home Media"
+		],
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/emby-logo.png",
+		"image": "linuxserver/emby:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "8096:8096/tcp",
+		  "8920:8920/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/emby/config"
+		  },
+		  {
+			"container": "/data/tvshows",
+			"bind": "/volume1/docker/emby/data/tvshows"
+		  },
+		  {
+			"container": "/data/movies",
+			"bind": "/volume1/docker/emby/data/movies"
+		  },
+		  {
+			"container": "/opt/vc/lib",
+			"bind": "/opt/vc/lib"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Emulatorjs",
+		"name": "Emulatorjs",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/emulatorjs/config<br>mkdir -p /volume1/docker/emulatorjs/data</p>",
+		"description": "[Emulatorjs](https://github.com/linuxserver/emulatorjs) - In browser web based emulation portable to nearly any device for many retro consoles. A mix of emulators is used between Libretro and EmulatorJS.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/emulatorjs-logo.png",
+		"image": "linuxserver/emulatorjs:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "SUBFOLDER",
+			"label": "SUBFOLDER",
+			"default": "/",
+			"description": "Specify a subfolder for reverse proxies IE '/FOLDER/'"
+		  }
+		],
+		"ports": [
+		  "3000:3000/tcp",
+		  "80:80/tcp",
+		  "4001:4001/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/emulatorjs/config"
+		  },
+		  {
+			"container": "/data",
+			"bind": "/volume1/docker/emulatorjs/data"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Grav",
+		"name": "Grav",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/grav/config</p>",
+		"description": "[Grav](https://github.com/getgrav/grav/) is a Fast, Simple, and Flexible, file-based Web-platform.",
+		"categories": [
+		  "Web Platform"
+		],
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/grav-logo.png",
+		"image": "linuxserver/grav:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "80:80/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/grav/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Grocy",
+		"name": "Grocy",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/grocy/config</p>",
+		"description": "[Grocy](https://github.com/grocy/grocy) is an ERP system for your kitchen! Cut down on food waste, and manage your chores with this brilliant utility. Keep track of your purchases, how much food you are wasting, what chores need doing and what batteries need charging with this proudly Open Source tool For more information on grocy visit their website and check it out: https://grocy.info",
+		"platform": "linux",
+		"logo": "https://grocy.info/img/grocy_logo.svg",
+		"image": "linuxserver/grocy:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "9283:80/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/grocy/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Guacd",
+		"name": "Guacd",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p>",
+		"description": "[Guacd](https://guacamole.apache.org/) - Apache Guacamole is a clientless remote desktop gateway. It supports standard protocols like VNC, RDP, and SSH. This container is only the backend server component needed to use The official or 3rd party HTML5 frontends.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/guacd.png",
+		"image": "linuxserver/guacd:latest",
+		"ports": [
+		  "4822:4822/tcp"
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Habridge",
+		"name": "Habridge",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/habridge/config</p>",
+		"description": "[Habridge](http://bwssystems.com/#/habridge) emulates Philips Hue API to other home automation gateways such as an Amazon Echo/Dot Gen 1 (gen 2 has issues discovering ha-bridge) or other systems that support Philips Hue. The Bridge handles basic commands such as 'On', 'Off' and 'brightness' commands of the hue protocol. This bridge can control most devices that have a distinct API. In the cases of systems that require authorization and/or have APIs that cannot be handled in the current method, a module may need to be built. The Harmony Hub is such a module and so is the Nest module. The Bridge has helpers to build devices for the gateway for the Logitech Harmony Hub, Vera, Vera Lite or Vera Edge, Nest, Somfy Tahoma, Home Assistant, Domoticz, MQTT, HAL, Fibaro, HomeWizard, LIFX, OpenHAB, FHEM, Broadlink and the ability to proxy all of your real Hue bridges behind this bridge. This bridge was built to help put the Internet of Things together. For more information about how to use this software have a look at their Wiki [https://github.com/bwssytems/ha-bridge/wiki](https://github.com/bwssytems/ha-bridge/wiki)",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/bwssytems/ha-bridge/master/src/main/resources/public/img/favicon.ico",
+		"image": "linuxserver/habridge:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "SEC_KEY",
+			"label": "SEC_KEY",
+			"default": "<Your Key To Encrypt Security Data>",
+			"description": "Key used to secure communication."
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "8080:8080/tcp",
+		  "50000:50000/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/habridge/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Healthchecks",
+		"name": "Healthchecks",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/healthchecks/config</p>",
+		"description": "[Healthchecks](https://github.com/healthchecks/healthchecks) is a watchdog for your cron jobs. It's a web server that listens for pings from your cron jobs, plus a web interface.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/healthchecks/healthchecks/master/static/img/welcome.png",
+		"image": "linuxserver/healthchecks:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "SITE_ROOT",
+			"label": "SITE_ROOT",
+			"default": "<SITE_ROOT>",
+			"description": "The site's top-level URL and the port it listens to if differrent than 80 or 443 (e.g., https://healthchecks.example.com:8000)"
+		  },
+		  {
+			"name": "SITE_NAME",
+			"label": "SITE_NAME",
+			"default": "<SITE_NAME>",
+			"description": "The site's name (e.g., 'Example Corp HealthChecks')"
+		  },
+		  {
+			"name": "DEFAULT_FROM_EMAIL",
+			"label": "DEFAULT_FROM_EMAIL",
+			"default": "<DEFAULT_FROM_EMAIL>",
+			"description": "From email for alerts"
+		  },
+		  {
+			"name": "EMAIL_HOST",
+			"label": "EMAIL_HOST",
+			"default": "<EMAIL_HOST>",
+			"description": "SMTP host"
+		  },
+		  {
+			"name": "EMAIL_PORT",
+			"label": "EMAIL_PORT",
+			"default": "<EMAIL_PORT>",
+			"description": "SMTP port"
+		  },
+		  {
+			"name": "EMAIL_HOST_USER",
+			"label": "EMAIL_HOST_USER",
+			"default": "<EMAIL_HOST_USER>",
+			"description": "SMTP user"
+		  },
+		  {
+			"name": "EMAIL_HOST_PASSWORD",
+			"label": "EMAIL_HOST_PASSWORD",
+			"default": "<EMAIL_HOST_PASSWORD>",
+			"description": "SMTP password"
+		  },
+		  {
+			"name": "EMAIL_USE_TLS",
+			"label": "EMAIL_USE_TLS",
+			"default": "<True or False>",
+			"description": "Use TLS for SMTP (`True` or `False`)"
+		  },
+		  {
+			"name": "SUPERUSER_EMAIL",
+			"label": "SUPERUSER_EMAIL",
+			"default": "<SUPERUSER_EMAIL>",
+			"description": "Superuser email"
+		  },
+		  {
+			"name": "SUPERUSER_PASSWORD",
+			"label": "SUPERUSER_PASSWORD",
+			"default": "<SUPERUSER_PASSWORD>",
+			"description": "Superuser password"
+		  },
+		  {
+			"name": "REGENERATE_SETTINGS",
+			"label": "REGENERATE_SETTINGS",
+			"default": "True/False",
+			"description": "Defaults to False. Set to true to always override the `local_settings.py` file with values from environment variables. Do not set to True if you have made manual modifications to this file."
+		  },
+		  {
+			"name": "SITE_LOGO_URL",
+			"label": "SITE_LOGO_URL",
+			"default": "<SITE_LOGO_URL>",
+			"description": "Custom site logo URL"
+		  },
+		  {
+			"name": "ALLOWED_HOSTS",
+			"label": "ALLOWED_HOSTS",
+			"default": "<ALLOWED_HOSTS>",
+			"description": "array of valid hostnames for the server `['test.com','test2.com']` (default: `['*']`)"
+		  },
+		  {
+			"name": "SECRET_KEY",
+			"label": "SECRET_KEY",
+			"default": "<SECRET_KEY>",
+			"description": "A secret key used for cryptographic signing. docker-healthchecks will generate a secure value if one does not exist"
+		  },
+		  {
+			"name": "APPRISE_ENABLED",
+			"label": "APPRISE_ENABLED",
+			"default": "True/False",
+			"description": "Defaults to False. A boolean that turns on/off the Apprise integration (https://github.com/caronc/apprise)"
+		  }
+		],
+		"ports": [
+		  "8000:8000/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/healthchecks/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Hedgedoc",
+		"name": "Hedgedoc",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/hedgedoc/config</p>",
+		"description": "[HedgeDoc](https://hedgedoc.org/) gives you access to all your files wherever you are. HedgeDoc is a real-time, multi-platform collaborative markdown note editor. This means that you can write notes with other people on your desktop, tablet or even on the phone. You can sign-in via multiple auth providers like Facebook, Twitter, GitHub and many more on the homepage.",
+		"categories": [
+		  "Documentation"
+		],
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/hedgedoc-banner.png",
+		"image": "linuxserver/hedgedoc:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "DB_HOST",
+			"label": "DB_HOST",
+			"default": "<hostname or ip>",
+			"description": "Host address of mysql database"
+		  },
+		  {
+			"name": "DB_PORT",
+			"label": "DB_PORT",
+			"default": "3306",
+			"description": "Port to access mysql database default is 3306"
+		  },
+		  {
+			"name": "DB_USER",
+			"label": "DB_USER",
+			"default": "hedgedoc",
+			"description": "Database user"
+		  },
+		  {
+			"name": "DB_PASS",
+			"label": "DB_PASS",
+			"default": "<secret password>",
+			"description": "Database password"
+		  },
+		  {
+			"name": "DB_NAME",
+			"label": "DB_NAME",
+			"default": "hedgedoc",
+			"description": "Database name"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "CMD_DOMAIN",
+			"label": "CMD_DOMAIN",
+			"default": "localhost",
+			"description": "The address the gui will be accessed at (ie. `192.168.1.1` or `hedgedoc.domain.com`)."
+		  },
+		  {
+			"name": "CMD_URL_ADDPORT",
+			"label": "CMD_URL_ADDPORT",
+			"default": "true",
+			"description": "Set to `false` if accessing at port `80` or `443`."
+		  },
+		  {
+			"name": "CMD_PROTOCOL_USESSL",
+			"label": "CMD_PROTOCOL_USESSL",
+			"default": "false",
+			"description": "Set to `true` if accessing over https via reverse proxy."
+		  },
+		  {
+			"name": "CMD_PORT",
+			"label": "CMD_PORT",
+			"default": "3000",
+			"description": "If you wish to access hedgedoc at a port different than 80, 443 or 3000, you need to set this to that port (ie. `CMD_PORT=5000`) and change the port mapping accordingly (5000:5000)."
+		  }
+		],
+		"ports": [
+		  "3000:3000/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/hedgedoc/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Homeassistant",
+		"name": "Homeassistant",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/homeassistant/config</p>",
+		"description": "[Home Assistant Core](https://www.home-assistant.io/) - Open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts. Perfect to run on a Raspberry Pi or a local server.",
+		"categories": [
+		  "Home Automation"
+		],
+		"platform": "linux",
+		"logo": "https://github.com/home-assistant/home-assistant.io/raw/next/source/images/favicon-192x192-full.png",
+		"image": "linuxserver/homeassistant:latest",
+		"network": "host",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "8123:8123/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/homeassistant/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Jellyfin",
+		"name": "Jellyfin",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/jellyfin/config<br>mkdir -p /volume1/docker/jellyfin/data/tvshows<br>mkdir -p /volume1/docker/jellyfin/data/movies</p>",
+		"description": "[Jellyfin](https://jellyfin.github.io/) is a Free Software Media System that puts you in control of managing and streaming your media. It is an alternative to the proprietary Emby and Plex, to provide media from a dedicated server to end-user devices via multiple apps. Jellyfin is descended from Emby's 3.5.2 release and ported to the .NET Core framework to enable full cross-platform support. There are no strings attached, no premium licenses or features, and no hidden agendas: just a team who want to build something better and work together to achieve it.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/jellyfin/jellyfin-ux/master/branding/SVG/banner-logo-solid.svg?sanitize=true",
+		"image": "linuxserver/jellyfin:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "JELLYFIN_PublishedServerUrl",
+			"label": "JELLYFIN_PublishedServerUrl",
+			"default": "192.168.0.5",
+			"description": "Set the autodiscovery response domain or IP address."
+		  }
+		],
+		"ports": [
+		  "8096:8096/tcp",
+		  "8920:8920/tcp",
+		  "7359:7359/udp",
+		  "1900:1900/udp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/jellyfin/config"
+		  },
+		  {
+			"container": "/data/tvshows",
+			"bind": "/volume1/docker/jellyfin/data/tvshows"
+		  },
+		  {
+			"container": "/data/movies",
+			"bind": "/volume1/docker/jellyfin/data/movies"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Lazylibrarian",
+		"name": "Lazylibrarian",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/lazylibrarian/config<br>mkdir -p /volume1/docker/lazylibrarian/downloads<br>mkdir -p /volume1/docker/lazylibrarian/books</p>",
+		"description": "[Lazylibrarian](https://lazylibrarian.gitlab.io/) is a program to follow authors and grab metadata for all your digital reading needs. It uses a combination of Goodreads Librarything and optionally GoogleBooks as sources for author info and book info. This container is based on the DobyTang fork.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/lazylibrarian-icon.png",
+		"image": "linuxserver/lazylibrarian:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "DOCKER_MODS",
+			"label": "DOCKER_MODS",
+			"default": "linuxserver/calibre-web:calibre|linuxserver/mods:lazylibrarian-ffmpeg",
+			"description": "Allows additional functionality to be added, e.g. the Calibredb import program (optional, more info below)"
+		  }
+		],
+		"ports": [
+		  "5299:5299/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/lazylibrarian/config"
+		  },
+		  {
+			"container": "/downloads",
+			"bind": "/volume1/docker/lazylibrarian/downloads"
+		  },
+		  {
+			"container": "/books",
+			"bind": "/volume1/docker/lazylibrarian/books"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Mariadb",
+		"name": "Mariadb",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/mariadb/config</p>",
+		"description": "[Mariadb](https://mariadb.org/) is one of the most popular database servers. Made by the original developers of MySQL.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/mariadb-git.png",
+		"image": "linuxserver/mariadb:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "MYSQL_ROOT_PASSWORD",
+			"label": "MYSQL_ROOT_PASSWORD",
+			"default": "ROOT_ACCESS_PASSWORD",
+			"description": "Set this to root password for installation (minimum 4 characters)."
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "MYSQL_DATABASE",
+			"label": "MYSQL_DATABASE",
+			"default": "USER_DB_NAME",
+			"description": "Specify the name of a database to be created on image startup."
+		  },
+		  {
+			"name": "MYSQL_USER",
+			"label": "MYSQL_USER",
+			"default": "MYSQL_USER",
+			"description": "This user will have superuser access to the database specified by MYSQL_DATABASE (do not use root here)."
+		  },
+		  {
+			"name": "MYSQL_PASSWORD",
+			"label": "MYSQL_PASSWORD",
+			"default": "DATABASE_PASSWORD",
+			"description": "Set this to the password you want to use for you MYSQL_USER (minimum 4 characters)."
+		  },
+		  {
+			"name": "REMOTE_SQL",
+			"label": "REMOTE_SQL",
+			"default": "http://URL1/your.sql,https://URL2/your.sql",
+			"description": "Set this to ingest sql files from an http/https endpoint (comma seperated array)."
+		  }
+		],
+		"ports": [
+		  "3306:3306/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/mariadb/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Medusa",
+		"name": "Medusa",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/medusa/config<br>mkdir -p /volume1/docker/medusa/downloads<br>mkdir -p /volume1/docker/medusa/tv</p>",
+		"description": "[Medusa](https://pymedusa.com/) is an automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/medusa-icon.png",
+		"image": "linuxserver/medusa:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "8081:8081/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/medusa/config"
+		  },
+		  {
+			"container": "/downloads",
+			"bind": "/volume1/docker/medusa/downloads"
+		  },
+		  {
+			"container": "/tv",
+			"bind": "/volume1/docker/medusa/tv"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Mylar3",
+		"name": "Mylar3",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/mylar3/config<br>mkdir -p /volume1/docker/mylar3/comics<br>mkdir -p /volume1/docker/mylar3/downloads</p>",
+		"description": "[Mylar3](https://github.com/mylar3/mylar3) is an automated Comic Book downloader (cbr/cbz) for use with NZB and torrents written in python. It supports SABnzbd, NZBGET, and many torrent clients in addition to DDL.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/mylar-icon.png",
+		"image": "linuxserver/mylar3:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  }
+		],
+		"ports": [
+		  "8090:8090/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/mylar3/config"
+		  },
+		  {
+			"container": "/comics",
+			"bind": "/volume1/docker/mylar3/comics"
+		  },
+		  {
+			"container": "/downloads",
+			"bind": "/volume1/docker/mylar3/downloads"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Mysql-workbench",
+		"name": "Mysql-workbench",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/mysql-workbench/config</p>",
+		"description": "[MySQL Workbench](https://www.mysql.com/products/workbench/) is a unified visual tool for database architects, developers, and DBAs. MySQL Workbench provides data modeling, SQL development, and comprehensive administration tools for server configuration, user administration, backup, and much more.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/mysql-workbench-icon.png",
+		"image": "linuxserver/mysql-workbench:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "3000:3000/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/mysql-workbench/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Nano",
+		"name": "Nano",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/nano/config</p>",
+		"description": "[Nano](https://nano.org/) is a digital payment protocol designed to be accessible and lightweight, with a focus on removing inefficiencies present in other cryptocurrencies. With ultrafast transactions and zero fees on a secure, green and decentralized network, this makes Nano ideal for everyday transactions.",
+		"platform": "linux",
+		"logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Nano_logo.png/640px-Nano_logo.png",
+		"image": "linuxserver/nano:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "PEER_HOST",
+			"label": "PEER_HOST",
+			"default": "localhost",
+			"description": "Default peer host (can be overidden with an array by command line options)"
+		  },
+		  {
+			"name": "LIVE_GENESIS_PUB",
+			"label": "LIVE_GENESIS_PUB",
+			"default": "GENESIS_PUBLIC",
+			"description": "Genesis block public key"
+		  },
+		  {
+			"name": "LIVE_GENESIS_ACCOUNT",
+			"label": "LIVE_GENESIS_ACCOUNT",
+			"default": "nano_xxxxxx",
+			"description": "Genesis block account"
+		  },
+		  {
+			"name": "LIVE_GENESIS_WORK",
+			"label": "LIVE_GENESIS_WORK",
+			"default": "WORK_FOR_BLOCK",
+			"description": "Genesis block proof of work"
+		  },
+		  {
+			"name": "LIVE_GENESIS_SIG",
+			"label": "LIVE_GENESIS_SIG",
+			"default": "BLOCK_SIGNATURE",
+			"description": "Genesis block signature"
+		  },
+		  {
+			"name": "CLI_OPTIONS",
+			"label": "CLI_OPTIONS",
+			"default": "--config node.enable_voting=true",
+			"description": "Node run command cli args"
+		  },
+		  {
+			"name": "LMDB_BOOTSTRAP_URL",
+			"label": "LMDB_BOOTSTRAP_URL",
+			"default": "http://example.com/Nano_64_version_20.7z",
+			"description": "HTTP/HTTPS endpoint to download a 7z file with the data.ldb to bootstrap to this node"
+		  }
+		],
+		"ports": [
+		  "8075:8075/tcp",
+		  "7076:3000/tcp",
+		  "7077:3001/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/nano/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Nano-wallet",
+		"name": "Nano-wallet",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p>",
+		"description": "[Nano-wallet](https://nano.org/) is a digital payment protocol designed to be accessible and lightweight, with a focus on removing inefficiencies present in other cryptocurrencies. With ultrafast transactions and zero fees on a secure, green and decentralized network, this makes Nano ideal for everyday transactions. This container is a simple nginx wrapper for the light wallet located [here](https://github.com/linuxserver/nano-wallet). You will need to pass a valid RPC host when accessing this container.",
+		"platform": "linux",
+		"logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Nano_logo.png/640px-Nano_logo.png",
+		"image": "linuxserver/nano-wallet:latest",
+		"ports": [
+		  "80:80/tcp"
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Netbootxyz",
+		"name": "Netbootxyz",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/netbootxyz/config<br>mkdir -p /volume1/docker/netbootxyz/assets</p>",
+		"description": "[Netbootxyz](https://netboot.xyz) is a way to PXE boot various operating system installers or utilities from one place within the BIOS without the need of having to go retrieve the media to run the tool. iPXE is used to provide a user friendly menu from within the BIOS that lets you easily choose the operating system you want along with any specific types of versions or bootable flags.",
+		"platform": "linux",
+		"logo": "https://netboot.xyz/images/netboot.xyz.gif",
+		"image": "linuxserver/netbootxyz:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "MENU_VERSION",
+			"label": "MENU_VERSION",
+			"default": "1.9.9",
+			"description": "Specify a specific version of boot files you want to use from NETBOOT.XYZ (unset pulls latest)"
+		  },
+		  {
+			"name": "PORT_RANGE",
+			"label": "PORT_RANGE",
+			"default": "30000:30010",
+			"description": "Specify the port range tftp will use for data transfers [(see Wikipedia)](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol#Details)"
+		  },
+		  {
+			"name": "SUBFOLDER",
+			"label": "SUBFOLDER",
+			"default": "/",
+			"description": "Specify a sobfolder if running this behind a reverse proxy (IE /proxy/)"
+		  }
+		],
+		"ports": [
+		  "3000:3000/tcp",
+		  "69:69/udp",
+		  "8080:80/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/netbootxyz/config"
+		  },
+		  {
+			"container": "/assets",
+			"bind": "/volume1/docker/netbootxyz/assets"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Nextcloud",
+		"name": "Nextcloud",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/nextcloud/config<br>mkdir -p /volume1/docker/nextcloud/data</p>",
+		"description": "[Nextcloud](https://nextcloud.com/) gives you access to all your files wherever you are. Where are your photos and documents? With Nextcloud you pick a server of your choice, at home, in a data center or at a provider. And that is where your files will be. Nextcloud runs on that server, protecting your data and giving you access from your desktop or mobile devices. Through Nextcloud you also access, sync and share your existing data on that FTP drive at the office, a Dropbox or a NAS you have at home.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nextcloud-icon.png",
+		"image": "linuxserver/nextcloud:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "443:443/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/nextcloud/config"
+		  },
+		  {
+			"container": "/data",
+			"bind": "/volume1/docker/nextcloud/data"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Nginx",
+		"name": "Nginx",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/nginx/config</p>",
+		"description": "[Nginx](https://nginx.org/) is a simple webserver with php support. The config files reside in `/config` for easy user customization.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/nginx-banner.png",
+		"image": "linuxserver/nginx:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "80:80/tcp",
+		  "443:443/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/nginx/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Paperless-ngx",
+		"name": "Paperless-ngx",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/paperless-ngx/config<br>mkdir -p /volume1/docker/paperless-ngx/data</p>",
+		"description": "[Paperless-ngx](https://github.com/paperless-ngx/paperless-ngx) is an application by Daniel Quinn and contributors that indexes your scanned documents and allows you to easily search for documents and store metadata alongside your documents.'",
+		"platform": "linux",
+		"logo": "",
+		"image": "linuxserver/paperless-ngx:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "REDIS_URL",
+			"label": "REDIS_URL",
+			"default": "",
+			"description": "Specify an external redis instance to use. Can optionally include a port (`redis:6379`) and/or db (`redis/foo`). If left blank or not included, will use a built-in redis instance. If changed after initial setup will also require manual modification of /config/settings.py"
+		  }
+		],
+		"ports": [
+		  "8000:8000/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/paperless-ngx/config"
+		  },
+		  {
+			"container": "/data",
+			"bind": "/volume1/docker/paperless-ngx/data"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Phpmyadmin",
+		"name": "Phpmyadmin",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/phpmyadmin/config</p>",
+		"description": "[Phpmyadmin](https://github.com/phpmyadmin/phpmyadmin/) is a free software tool written in PHP, intended to handle the administration of MySQL over the Web. phpMyAdmin supports a wide range of operations on MySQL and MariaDB.",
+		"categories": [
+		  "System Tools"
+		],
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/phpmyadmin-logo.png",
+		"image": "linuxserver/phpmyadmin:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "PMA_ARBITRARY",
+			"label": "PMA_ARBITRARY",
+			"default": "1",
+			"description": "Set to `1` to allow you to connect to any server. Setting to `0` will only allow you to connect to specified hosts (See Application Setup)"
+		  },
+		  {
+			"name": "PMA_ABSOLUTE_URI",
+			"label": "PMA_ABSOLUTE_URI",
+			"default": "https://phpmyadmin.example.com",
+			"description": "Set the URL you will use to access the web frontend"
+		  }
+		],
+		"ports": [
+		  "80:80/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/phpmyadmin/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Plex",
+		"name": "Plex",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/plex/config<br>mkdir -p /volume1/docker/plex/tv<br>mkdir -p /volume1/docker/plex/movies</p>",
+		"description": "[Plex](https://plex.tv) organizes video, music and photos from personal media libraries and streams them to smart TVs, streaming boxes and mobile devices. This container is packaged as a standalone Plex Media Server. has always been a top priority. Straightforward design and bulk actions mean getting things done faster.",
+		"platform": "linux",
+		"logo": "http://the-gadgeteer.com/wp-content/uploads/2015/10/plex-logo-e1446990678679.png",
+		"image": "linuxserver/plex:latest",
+		"network": "host",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "VERSION",
+			"label": "VERSION",
+			"default": "docker",
+			"description": "Set whether to update plex or not - see Application Setup section."
+		  },
+		  {
+			"name": "PLEX_CLAIM",
+			"label": "PLEX_CLAIM",
+			"default": "",
+			"description": "Optionally you can obtain a claim token from https://plex.tv/claim and input here. Keep in mind that the claim tokens expire within 4 minutes."
+		  }
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/plex/config"
+		  },
+		  {
+			"container": "/tv",
+			"bind": "/volume1/docker/plex/tv"
+		  },
+		  {
+			"container": "/movies",
+			"bind": "/volume1/docker/plex/movies"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Plex-meta-manager",
+		"name": "Plex-meta-manager",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/plex-meta-manager/config</p>",
+		"description": "[Plex-meta-manager](https://github.com/meisnate12/Plex-Meta-Manager) is a Python 3 script that can be continuously run using YAML configuration files to update on a schedule the metadata of the movies, shows, and collections in your libraries as well as automatically build collections based on various methods all detailed in the wiki.",
+		"categories": [
+		  "Media Management"
+		],
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/plex-meta-manager-banner.png",
+		"image": "linuxserver/plex-meta-manager:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "PMM_CONFIG",
+			"label": "PMM_CONFIG",
+			"default": "/config/config.yml",
+			"description": "Specify a custom config file to use."
+		  },
+		  {
+			"name": "PMM_TIME",
+			"label": "PMM_TIME",
+			"default": "03:00",
+			"description": "Comma-separated list of times to update each day. Format: `HH:MM`."
+		  },
+		  {
+			"name": "PMM_RUN",
+			"label": "PMM_RUN",
+			"default": "False",
+			"description": "Set to `True` to run without the scheduler."
+		  },
+		  {
+			"name": "PMM_TEST",
+			"label": "PMM_TEST",
+			"default": "False",
+			"description": "Set to `True` to run in debug mode with only collections that have `test: true`."
+		  },
+		  {
+			"name": "PMM_NO_MISSING",
+			"label": "PMM_NO_MISSING",
+			"default": "False",
+			"description": "Set to `True` to run without any of the missing movie/show functions."
+		  }
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/plex-meta-manager/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Projectsend",
+		"name": "Projectsend",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/projectsend/config<br>mkdir -p /volume1/docker/projectsend/data</p>",
+		"description": "[Projectsend](http://www.projectsend.org) is a self-hosted application that lets you upload files and assign them to specific clients that you create yourself. Secure, private and easy. No more depending on external services or e-mail to send those files.",
+		"platform": "linux",
+		"logo": "http://www.projectsend.org/wp-content/themes/projectsend/img/screenshots.png",
+		"image": "linuxserver/projectsend:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "MAX_UPLOAD",
+			"label": "MAX_UPLOAD",
+			"default": "<5000>",
+			"description": "To set maximum upload size (in MB), default if unset is 5000."
+		  }
+		],
+		"ports": [
+		  "80:80/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/projectsend/config"
+		  },
+		  {
+			"container": "/data",
+			"bind": "/volume1/docker/projectsend/data"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Qbittorrent",
+		"name": "Qbittorrent",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/qbittorrent/config<br>mkdir -p /volume1/docker/qbittorrent/downloads</p>",
+		"description": "The [Qbittorrent](https://www.qbittorrent.org/) project aims to provide an open-source software alternative to µTorrent. qBittorrent is based on the Qt toolkit and libtorrent-rasterbar library.",
+		"platform": "linux",
+		"logo": "https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/qbittorrent-icon.png",
+		"image": "linuxserver/qbittorrent:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "WEBUI_PORT",
+			"label": "WEBUI_PORT",
+			"default": "8080",
+			"description": "for changing the port of the webui, see below for explanation"
+		  }
+		],
+		"ports": [
+		  "8080:8080/tcp",
+		  "6881:6881/tcp",
+		  "6881:6881/udp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/qbittorrent/config"
+		  },
+		  {
+			"container": "/downloads",
+			"bind": "/volume1/docker/qbittorrent/downloads"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Radarr",
+		"name": "Radarr",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/radarr/config<br>mkdir -p /volume1/docker/radarr/movies<br>mkdir -p /volume1/docker/radarr/downloads</p>",
+		"description": "[Radarr](https://github.com/Radarr/Radarr) - A fork of Sonarr to work with movies à la Couchpotato.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/radarr.png",
+		"image": "linuxserver/radarr:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "7878:7878/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/radarr/config"
+		  },
+		  {
+			"container": "/movies",
+			"bind": "/volume1/docker/radarr/movies"
+		  },
+		  {
+			"container": "/downloads",
+			"bind": "/volume1/docker/radarr/downloads"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Raneto",
+		"name": "Raneto",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/raneto/config</p>",
+		"description": "[Raneto](http://raneto.com/) - is an open source Knowledgebase platform that uses static Markdown files to power your Knowledgebase.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/gilbitron/Raneto/master/logo/logo_readme.png",
+		"image": "linuxserver/raneto:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "3000:3000/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/raneto/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Rdesktop",
+		"name": "Rdesktop",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p><br>mkdir -p /volume1/docker/rdesktop/config</p>",
+		"description": "[Rdesktop](http://xrdp.org/) - Containers containing full desktop environments in many popular flavors for Alpine, Ubuntu, Arch, and Fedora accessible via RDP.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/rdesktop.png",
+		"image": "linuxserver/rdesktop:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "3389:3389/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/var/run/docker.sock",
+			"bind": "/var/run/docker.sock"
+		  },
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/rdesktop/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Rsnapshot",
+		"name": "Rsnapshot",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/rsnapshot/config<br>mkdir -p /volume1/docker/rsnapshot/.snapshots<br>mkdir -p /volume1/docker/rsnapshot/data</p>",
+		"description": "[Rsnapshot](http://www.rsnapshot.org/) is a filesystem snapshot utility based on rsync. rsnapshot makes it easy to make periodic snapshots of local machines, and remote machines over ssh. The code makes extensive use of hard links whenever possible, to greatly reduce the disk space required.'",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/rsnapshot.png",
+		"image": "linuxserver/rsnapshot:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "80:80/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/rsnapshot/config"
+		  },
+		  {
+			"container": "/.snapshots",
+			"bind": "/volume1/docker/rsnapshot/.snapshots"
+		  },
+		  {
+			"container": "/data",
+			"bind": "/volume1/docker/rsnapshot/data"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Scrutiny",
+		"name": "Scrutiny",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/scrutiny/config<br></p>",
+		"description": "[Scrutiny](https://github.com/AnalogJ/scrutiny) WebUI for smartd S.M.A.R.T monitoring. Scrutiny is a Hard Drive Health Dashboard & Monitoring solution, merging manufacturer provided S.M.A.R.T metrics with real-world failure rates from Backblaze.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/AnalogJ/scrutiny/master/docs/dashboard.png",
+		"image": "linuxserver/scrutiny:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "SCRUTINY_API_ENDPOINT",
+			"label": "SCRUTINY_API_ENDPOINT",
+			"default": "http://localhost:8080",
+			"description": "# optional - API endpoint of the scrutiny UI. Do not change unless using as a remote collector"
+		  },
+		  {
+			"name": "SCRUTINY_WEB",
+			"label": "SCRUTINY_WEB",
+			"default": "true",
+			"description": "# optional - Run the web service."
+		  },
+		  {
+			"name": "SCRUTINY_COLLECTOR",
+			"label": "SCRUTINY_COLLECTOR",
+			"default": "true",
+			"description": "# optional - Run the metrics collector."
+		  }
+		],
+		"ports": [
+		  "8080:8080/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/scrutiny/config"
+		  },
+		  {
+			"container": "/run/udev:ro",
+			"bind": "/run/udev:ro"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Sickchill",
+		"name": "Sickchill",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/sickchill/config<br>mkdir -p /volume1/docker/sickchill/downloads<br>mkdir -p /volume1/docker/sickchill/tv</p>",
+		"description": "[Sickchill](https://github.com/SickChill/SickChill) is an Automatic Video Library Manager for TV Shows. It watches for new episodes of your favorite shows, and when they are posted it does its magic.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sickchill-banner.png",
+		"image": "linuxserver/sickchill:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "8081:8081/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/sickchill/config"
+		  },
+		  {
+			"container": "/downloads",
+			"bind": "/volume1/docker/sickchill/downloads"
+		  },
+		  {
+			"container": "/tv",
+			"bind": "/volume1/docker/sickchill/tv"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Sickgear",
+		"name": "Sickgear",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/sickgear/config<br>mkdir -p /volume1/docker/sickgear/tv<br>mkdir -p /volume1/docker/sickgear/downloads</p>",
+		"description": "[SickGear](https://github.com/sickgear/sickgear) provides management of TV shows and/or Anime, it detects new episodes, links downloader apps, and more.. For more information on SickGear visit their website and check it out: https://github.com/SickGear/SickGear",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/wiki/SickGear/SickGear.Wiki/images/SickGearLogo.png",
+		"image": "linuxserver/sickgear:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  }
+		],
+		"ports": [
+		  "8081:8081/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/sickgear/config"
+		  },
+		  {
+			"container": "/tv",
+			"bind": "/volume1/docker/sickgear/tv"
+		  },
+		  {
+			"container": "/downloads",
+			"bind": "/volume1/docker/sickgear/downloads"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Snipe-it",
+		"name": "Snipe-it",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/snipe-it/config</p>",
+		"description": "[Snipe-it](https://github.com/snipe/snipe-it) makes asset management easy. It was built by people solving real-world IT and asset management problems, and a solid UX has always been a top priority. Straightforward design and bulk actions mean getting things done faster.",
+		"platform": "linux",
+		"logo": "https://s3-us-west-2.amazonaws.com/linuxserver-docs/images/snipe-it-logo500x500.png",
+		"image": "linuxserver/snipe-it:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "APP_URL",
+			"label": "APP_URL",
+			"default": "http://localhost:8080",
+			"description": "Hostname or IP and port if applicable, be sure to define https/http"
+		  },
+		  {
+			"name": "MYSQL_PORT_3306_TCP_ADDR",
+			"label": "MYSQL_PORT_3306_TCP_ADDR",
+			"default": "<mysql host>",
+			"description": "Mysql hostname or IP to use"
+		  },
+		  {
+			"name": "MYSQL_PORT_3306_TCP_PORT",
+			"label": "MYSQL_PORT_3306_TCP_PORT",
+			"default": "<mysql port>",
+			"description": "Mysql port to use"
+		  },
+		  {
+			"name": "MYSQL_DATABASE",
+			"label": "MYSQL_DATABASE",
+			"default": "<mysql database>",
+			"description": "Mysql database to use"
+		  },
+		  {
+			"name": "MYSQL_USER",
+			"label": "MYSQL_USER",
+			"default": "<mysql pass>",
+			"description": "Mysql user to use"
+		  },
+		  {
+			"name": "MYSQL_PASSWORD",
+			"label": "MYSQL_PASSWORD",
+			"default": "changeme",
+			"description": "Mysql password to use"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "8080:80/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/snipe-it/config"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Sonarr",
+		"name": "Sonarr",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/sonarr/config<br>mkdir -p /volume1/docker/sonarr/tv<br>mkdir -p /volume1/docker/sonarr/downloads</p>",
+		"description": "[Sonarr](https://sonarr.tv/) (formerly NZBdrone) is a PVR for usenet and bittorrent users. It can monitor multiple RSS feeds for new episodes of your favorite shows and will grab, sort and rename them. It can also be configured to automatically upgrade the quality of files already downloaded when a better quality format becomes available.",
+		"categories": [
+		  "Media"
+		],
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sonarr-banner.png",
+		"image": "linuxserver/sonarr:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "8989:8989/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/sonarr/config"
+		  },
+		  {
+			"container": "/tv",
+			"bind": "/volume1/docker/sonarr/tv"
+		  },
+		  {
+			"container": "/downloads",
+			"bind": "/volume1/docker/sonarr/downloads"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Synclounge",
+		"name": "Synclounge",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p>",
+		"description": "[Synclounge](https://github.com/samcm/synclounge) is a third party tool that allows you to watch Plex in sync with your friends/family, wherever you are.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/synclounge-banner.png",
+		"image": "linuxserver/synclounge:latest",
+		"env": [
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "AUTH_LIST",
+			"label": "AUTH_LIST",
+			"default": "plexuser1,plexuser2,email1,machineid1",
+			"description": "If set, only the users defined here and the users of the plex servers defined here will be able to access the server. Use e-mails, plex usernames and/or plex server machine ids, comma separated, no spaces."
+		  },
+		  {
+			"name": "AUTOJOIN_ENABLED",
+			"label": "AUTOJOIN_ENABLED",
+			"default": "false",
+			"description": "DEPRECATED - (Still works but will be removed in the future in favor of the built-in var `autojoin__room`) - Set to `true` to let users autojoin the server and a room (specified by the `AUTOJOIN_ROOM` var)."
+		  },
+		  {
+			"name": "AUTOJOIN_ROOM",
+			"label": "AUTOJOIN_ROOM",
+			"default": "roomname",
+			"description": "DEPRECATED - (Still works but will be removed in the future in favor of the built-in var `autojoin__room`) - Set the room name for auto joining (requires `AUTOJOIN_ENABLED` set to `true`)."
+		  }
+		],
+		"ports": [
+		  "8088:8088/tcp"
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Syncthing",
+		"name": "Syncthing",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/syncthing/config<br>mkdir -p /volume1/docker/syncthing/data1<br>mkdir -p /volume1/docker/syncthing/data2</p>",
+		"description": "[Syncthing](https://syncthing.net) replaces proprietary sync and cloud services with something open, trustworthy and decentralized. Your data is your data alone and you deserve to choose where it is stored, if it is shared with some third party and how it's transmitted over the Internet.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/syncthing-banner.png",
+		"image": "linuxserver/syncthing:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "8384:8384/tcp",
+		  "22000:22000/tcp",
+		  "22000:22000/udp",
+		  "21027:21027/udp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/syncthing/config"
+		  },
+		  {
+			"container": "/data1",
+			"bind": "/volume1/docker/syncthing/data1"
+		  },
+		  {
+			"container": "/data2",
+			"bind": "/volume1/docker/syncthing/data2"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Taisun",
+		"name": "Taisun",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p></p>",
+		"description": "[Taisun](https://www.taisun.io/) is an application for a Docker enabled device with an emphasis on providing a web based interface for managing a single server. Taisun allows you to: - Deploy and manage web based virtual desktops. - Deploy Taisun specific stacks of applications - Browse available images on popular Docker repositories - Import a Docker project from any git repository and start developing on your choice of web based IDE or full Linux desktop - Spinup a developer container based on popular frameworks and work from a web based IDE - Single click remote server access to Taisun and your Docker applications",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/Taisun-Docker/taisun/master/public/favicon/apple-icon-180x180.png",
+		"image": "linuxserver/taisun:latest",
+		"ports": [
+		  "3000:3000/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/var/run/docker.sock",
+			"bind": "/var/run/docker.sock"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Transmission",
+		"name": "Transmission",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/transmission/config<br>mkdir -p /volume1/docker/transmission/downloads<br>mkdir -p /volume1/docker/transmission/watch</p>",
+		"description": "[Transmission](https://www.transmissionbt.com/) is designed for easy, powerful use. Transmission has the features you want from a BitTorrent client: encryption, a web interface, peer exchange, magnet links, DHT, µTP, UPnP and NAT-PMP port forwarding, webseed support, watch directories, tracker editing, global and per-torrent speed limits, and more.",
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/transmission.png",
+		"image": "linuxserver/transmission:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "TRANSMISSION_WEB_HOME",
+			"label": "TRANSMISSION_WEB_HOME",
+			"default": "/combustion-release/",
+			"description": "Specify an alternative UI options are [`/combustion-release/`](https://github.com/Secretmapper/combustion), [`/transmission-web-control/`](https://github.com/ronggang/transmission-web-control), [`/kettu/`](https://github.com/endor/kettu), [`/flood-for-transmission/`](https://github.com/johman10/flood-for-transmission), and [`/transmissionic/`](https://github.com/6c65726f79/Transmissionic)."
+		  },
+		  {
+			"name": "USER",
+			"label": "USER",
+			"default": "username",
+			"description": "Specify an optional username for the interface"
+		  },
+		  {
+			"name": "PASS",
+			"label": "PASS",
+			"default": "password",
+			"description": "Specify an optional password for the interface"
+		  },
+		  {
+			"name": "WHITELIST",
+			"label": "WHITELIST",
+			"default": "iplist",
+			"description": "Specify an optional list of comma separated ip whitelist. Fills rpc-whitelist setting."
+		  },
+		  {
+			"name": "PEERPORT",
+			"label": "PEERPORT",
+			"default": "peerport",
+			"description": "Specify an optional port for torrent TCP/UDP connections. Fills peer-port setting."
+		  },
+		  {
+			"name": "HOST_WHITELIST",
+			"label": "HOST_WHITELIST",
+			"default": "dnsname list",
+			"description": "Specify an optional list of comma separated dns name whitelist. Fills rpc-host-whitelist setting."
+		  }
+		],
+		"ports": [
+		  "9091:9091/tcp",
+		  "51413:51413/tcp",
+		  "51413:51413/udp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/transmission/config"
+		  },
+		  {
+			"container": "/downloads",
+			"bind": "/volume1/docker/transmission/downloads"
+		  },
+		  {
+			"container": "/watch",
+			"bind": "/volume1/docker/transmission/watch"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Webgrabplus",
+		"name": "Webgrabplus",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/webgrabplus/config<br>mkdir -p /volume1/docker/webgrabplus/data</p>",
+		"description": "[Webgrabplus](http://www.webgrabplus.com) is a multi-site incremental xmltv epg grabber. It collects tv-program guide data from selected tvguide sites for your favourite channels.",
+		"platform": "linux",
+		"logo": "http://www.webgrabplus.com/sites/default/themes/WgTheme/images/slideshows/EPG_fading.jpg",
+		"image": "linuxserver/webgrabplus:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/webgrabplus/config"
+		  },
+		  {
+			"container": "/data",
+			"bind": "/volume1/docker/webgrabplus/data"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Webtop",
+		"name": "Webtop",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/webtop/config<br></p>",
+		"description": "[Webtop](https://github.com/linuxserver/gclient) - Alpine, Ubuntu, Fedora, and Arch based containers containing full desktop environments in officially supported flavors accessible via any modern web browser.",
+		"categories": [
+		  "Utilities"
+		],
+		"platform": "linux",
+		"logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/webtop-logo.png",
+		"image": "linuxserver/webtop:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  },
+		  {
+			"name": "SUBFOLDER",
+			"label": "SUBFOLDER",
+			"default": "/",
+			"description": "Specify a subfolder to use with reverse proxies, IE `/subfolder/`"
+		  },
+		  {
+			"name": "KEYBOARD",
+			"label": "KEYBOARD",
+			"default": "en-us-qwerty",
+			"description": "See the keyboard layouts section for more information and options."
+		  }
+		],
+		"ports": [
+		  "3000:3000/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/webtop/config"
+		  },
+		  {
+			"container": "/var/run/docker.sock",
+			"bind": "/var/run/docker.sock"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  },
+	  {
+		"type": 1,
+		"title": "Wikijs",
+		"name": "Wikijs",
+		"note": "If you happen to find this handy then maybe consider visiting my blog i post more in depth guides of various things on there <a href='https://www.voidlink.live' target='_blank'>VoidLink</a> <a href='https://www.linuxserver.io' target='_blank'>LinuxServer.io</a>.</p><p>Don't forget to create the volume directories on the host file system.</p><p>mkdir -p /volume1/docker/wikijs/config<br>mkdir -p /volume1/docker/wikijs/data</p>",
+		"description": "[Wikijs](https://github.com/Requarks/wiki) A modern, lightweight and powerful wiki app built on NodeJS.",
+		"platform": "linux",
+		"logo": "https://static.requarks.io/logo/wikijs-full.svg",
+		"image": "linuxserver/wikijs:latest",
+		"env": [
+		  {
+			"name": "PUID",
+			"label": "PUID",
+			"default": "1024",
+			"description": "for UserID"
+		  },
+		  {
+			"name": "PGID",
+			"label": "PGID",
+			"default": "100",
+			"description": "for GroupID"
+		  },
+		  {
+			"name": "TZ",
+			"label": "TZ",
+			"default": "Europe/Amsterdam",
+			"description": "Specify a timezone to use for example Europe/Amsterdam"
+		  }
+		],
+		"ports": [
+		  "3000:3000/tcp"
+		],
+		"volumes": [
+		  {
+			"container": "/config",
+			"bind": "/volume1/docker/wikijs/config"
+		  },
+		  {
+			"container": "/data",
+			"bind": "/volume1/docker/wikijs/data"
+		  }
+		],
+		"restart_policy": "unless-stopped"
+	  }
+	]
+  }
