@@ -8,7 +8,7 @@ I really love portainer and the functionality & ease of use it provides but the 
 2. Look for "App templetes" on the right side.
 3. Copy and paste this link into the "URL" section.
  
-`https://github.com/Flow-dev0/Portainer-Templete/blob/main/template.json`
+`https://raw.githubusercontent.com/Flow-dev0/Portainer-Templete/main/template.json`
 
 4. Hit save.
 5. You done, Now go to the "App Templete section" on the left menu panel and you should see a refreshed list of apps for you to try.
